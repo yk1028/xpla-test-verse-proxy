@@ -50,7 +50,6 @@ export class TransactionService {
     methodId: string,
     value: BigNumber,
   ): Promise<TransactionAllow> {
-    console.log("getMatchedTXAllowRule")
 
     let matchedTxAllowRule;
 
@@ -69,15 +68,8 @@ export class TransactionService {
         valueCondition,
         value,
 	);
-
-	console.log(fromCheck);
-	console.log(toCheck);
-	console.log(valueCheck);
-	console.log(condition);
-
       if (fromCheck && toCheck && valueCheck) {
         if (condition.rateLimit) {
-	  console.log("check rate limit")
           await this.rateLimitService.checkRateLimit(
             from,
             to,

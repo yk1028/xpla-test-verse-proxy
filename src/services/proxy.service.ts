@@ -133,8 +133,6 @@ export class ProxyService {
     requestContext: RequestContext,
     body: JsonrpcRequestBody,
   ) {
-    console.log("sendTransaction")
-
     const rawTx = body.params ? body.params[0] : undefined;
     if (!rawTx) throw new JsonrpcError('rawTransaction is not found', -32602);
 

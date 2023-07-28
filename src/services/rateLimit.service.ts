@@ -28,11 +28,6 @@ export class RateLimitService {
       rateLimit,
     );
 
-    console.log("tx counter : " + txCounter)
-    console.log("rateLimit.limit : " + rateLimit.limit)
-
-    txCounter + 1 > rateLimit.limit
-
     if (txCounter + 1 > rateLimit.limit)
       throw new JsonrpcError(
         `The number of allowed transacting has been exceeded. Wait ${rateLimit.interval} seconds before transacting.`,
