@@ -50,6 +50,8 @@ export class TransactionService {
     methodId: string,
     value: BigNumber,
   ): Promise<TransactionAllow> {
+    console.log("getMatchedTXAllowRule")
+
     let matchedTxAllowRule;
 
     for (const condition of this.txAllowList) {

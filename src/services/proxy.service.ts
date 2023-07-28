@@ -81,6 +81,8 @@ export class ProxyService {
         headers.origin ===
           'chrome-extension://ejbalbakoplchlghecdalmeeeajnimhm'; // https://microsoftedge.microsoft.com/addons/detail/metamask/ejbalbakoplchlghecdalmeeeajnimhm
 
+      console.log("method : " + method)
+
       if (method === 'eth_sendRawTransaction') {
         return await this.sendTransaction(requestContext, body);
       } else if (method === 'eth_estimateGas') {
@@ -131,6 +133,8 @@ export class ProxyService {
     requestContext: RequestContext,
     body: JsonrpcRequestBody,
   ) {
+    console.log("sendTransaction")
+
     const rawTx = body.params ? body.params[0] : undefined;
     if (!rawTx) throw new JsonrpcError('rawTransaction is not found', -32602);
 
@@ -148,8 +152,6 @@ export class ProxyService {
       );
       return result;
     }
-
-    console.log("call allow rule")
 
     // transaction other than contract deploy
     const methodId = tx.data.substring(0, 10);
