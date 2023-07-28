@@ -81,8 +81,6 @@ export class ProxyService {
         headers.origin ===
           'chrome-extension://ejbalbakoplchlghecdalmeeeajnimhm'; // https://microsoftedge.microsoft.com/addons/detail/metamask/ejbalbakoplchlghecdalmeeeajnimhm
 
-      console.log("method : " + method)
-
       if (method === 'eth_sendRawTransaction') {
         return await this.sendTransaction(requestContext, body);
       } else if (method === 'eth_estimateGas') {
