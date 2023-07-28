@@ -66,16 +66,23 @@ export class TransactionService {
       const valueCheck = this.allowCheckService.isAllowedValue(
         valueCondition,
         value,
-      );
+	);
+
+	console.log(fromCheck);
+	console.log(toCheck);
+	console.log(valueCheck);
+	console.log(condition);
 
       if (fromCheck && toCheck && valueCheck) {
-        if (condition.rateLimit)
+        if (condition.rateLimit) {
+	  console.log("check rate limit")
           await this.rateLimitService.checkRateLimit(
             from,
             to,
             methodId,
             condition.rateLimit,
-          );
+	  );
+	}
         matchedTxAllowRule = condition;
         break;
       }

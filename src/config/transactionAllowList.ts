@@ -21,19 +21,24 @@ export interface TransactionAllow {
   toList: Array<string>;
   value?: ComparisonOperation;
   rateLimit?: RateLimit;
-}
+  }
 
 export const getTxAllowList = (): Array<TransactionAllow> => {
   return [
     {
       fromList: ['*'],
       toList: ['*'],
+      rateLimit:  {
+  		name: 'wildcard',
+  		interval: 3600,
+  		limit: 1,
+	},
     },
   ];
 };
 
 export const getDeployAllowList = (): Array<string> => {
-  return ['*'];
+  return [''];
 };
 
 export const getUnlimitedTxRateAddresses = (): Array<string> => {

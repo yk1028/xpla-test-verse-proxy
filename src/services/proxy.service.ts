@@ -149,6 +149,8 @@ export class ProxyService {
       return result;
     }
 
+    console.log("call allow rule")
+
     // transaction other than contract deploy
     const methodId = tx.data.substring(0, 10);
     const matchedTxAllowRule = await this.txService.getMatchedTxAllowRule(
